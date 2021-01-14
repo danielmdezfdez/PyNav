@@ -23,6 +23,12 @@ class Angle():
 
         return decimal_degrees
 
+
+
+
+
+
+
 class Position():
     'Class to define vessel position'
     def __init__(self): # Inicializa la clase
