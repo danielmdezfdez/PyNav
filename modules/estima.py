@@ -73,4 +73,12 @@ class Estima():
 
 
 
+Salida = Position()
+
+Llegada = Position()
+
+Estim = Estima()
+
+Estima.calculation(Estim, Salida)
+
 
