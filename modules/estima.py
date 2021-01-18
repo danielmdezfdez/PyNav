@@ -24,7 +24,7 @@ class Angle():
         return decimal_degrees
 
 
-    def sexagesimal_console_print(valor):
+    def sexagesimal_console_print(self, valor):
 
         grados = int(valor)
 
