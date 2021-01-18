@@ -1,14 +1,12 @@
 import math
 
-# Definimos las clases con las que vamos a trabajar
-
-
 
 class Angle():
     def __init__(self):
         pass
 
     def sexagesimal_user_input(self, valor_entrada):
+        "Transforms user data input in form GG MM.mm into GG.gg."
 
         x=input(valor_entrada)
 
@@ -25,22 +23,15 @@ class Angle():
 
 
     def sexagesimal_console_print(self, valor):
+        "Transforms decimal degrees into sexagesimal degrees for data printing."
 
         grados = int(valor)
-
         minutos = valor - int(valor)
-
         minutos = abs(minutos*60)
 
         solution = str(grados) + "º " + str(minutos) + "'"
 
-        print(solution)
-
         return solution
-
-
-
-
 
 
 
@@ -67,6 +58,7 @@ class Estima():
         pass
 
     def calculation(self, position):
+        "Makes all Dead Reckoning Calculations."
 
         self.departure_position = Position.get_position(position)
         self.departure_latitude = self.departure_position[0]        
