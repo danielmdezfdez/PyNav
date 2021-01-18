@@ -24,6 +24,22 @@ class Angle():
         return decimal_degrees
 
 
+    def sexagesimal_console_print(valor):
+
+        grados = int(valor)
+
+        minutos = valor - int(valor)
+
+        minutos = abs(minutos*60)
+
+        solution = str(grados) + "º " + str(minutos) + "'"
+
+        print(solution)
+
+        return solution
+
+
+
 
 
 
