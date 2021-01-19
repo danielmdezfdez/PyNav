@@ -39,9 +39,10 @@ class Angle():
 
 
 class Position():
-    'Class to define vessel position'
+    'Class to define vessel position through a '
     def __init__(self): # Inicializa la clase
-        pass
+        self.coordinates = [0, 0]
+
 
 
     def get_position(self): # Pide al usuario que introduzca una latitud y longitud
@@ -59,12 +60,13 @@ class Position():
     def position_console_print(self):                                               # HAY QUE ARREGLAR ESTOOOOOOO
         "Prints on screen Latitude and Longitude on DD MM format."
         
-        self.Position = Position()
-        self.dec_latitude = self.coordinates[0]
-        self.dec_longitude = self.coordinates[1]
+        self.coordinates = Position
 
-        self.sex_latitude = Angle.sexagesimal_console_print(self, self.dec_latitude)
-        self.sex_longitude = Angle.sexagesimal_console_print(self, self.dec_longitude)
+        self.decimal_latitude = self.coordinates[0]
+        self.decimal_longitude = self.coordinates[1]
+
+        self.sex_latitude = Angle.sexagesimal_console_print(self, self.decimal_latitude)
+        self.sex_longitude = Angle.sexagesimal_console_print(self, self.decimal_longitude)
 
         self.position_sexagesimal_coordinates = [self.sex_latitude, self.sex_longitude]
 
