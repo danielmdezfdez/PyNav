@@ -24,10 +24,12 @@ class Position():
         self.longitude = Angle.sexagesimal_user_input(self, "Longitude GGG MM.m: ")
         self.departure_position = [self.latitude, self.longitude]
         return [self.latitude, self.longitude]
-class Estima():
+
+
+class Navigation():
     def __init__(self):
         pass
-    def calculation(self, position):
+    def dead_reckoning(self, position):
         self.departure_position = Position.get_position(position)
         self.departure_latitude = self.departure_position[0]        
         self.departure_longitude = self.departure_position[1]
@@ -51,6 +53,6 @@ Salida = Position()
 
 Llegada = Position()
 
-Estim = Estima()
+Estima = Navigation()
 
-Estima.calculation(Estim, Salida)
+Navigation.dead_reckoning(Estima, Salida)
