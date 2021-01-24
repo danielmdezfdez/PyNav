@@ -1,7 +1,14 @@
 # PyNav
-Set of Python utilities for navigators.
 
-It is supposed to include different methods of sailing including Orthodromic, Loxodromic Direct and Indirect methods and also Celestial Navigation modules.
+This isa personal project to develop some navigation utilites for solving common navigation problems.
 
+Main goal is to be able to solve a 3 Simultaneous LOPs without using any third party library, just putting almanaq values in the program.
+Other goals are expected to, like learn Python OOP.
 
-still working on it haha
+Active Options:
+- Dead Reckoning Navigation
+
+Non Active Now:
+- Dead Reckoning "Inverse" Navigation
+- Orthodromic Navigation
+- Crepuscular Calculations
