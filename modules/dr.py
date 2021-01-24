@@ -1,5 +1,6 @@
 import math
 # Definimos las clases con las que vamos a trabajar
+
 class Angle():
     def __init__(self):
         pass
@@ -32,7 +33,6 @@ class Position():
     def define_position(self):
         "Auxiliary method for defining position."
         return [self.latitude, self.longitude]
-
 
 class Vessel():
     "Grabs Vessel basic data: Speed and COG"
@@ -71,34 +71,30 @@ class DeadReckoning(Vessel):
     pass
 
     def direct(self, position, Vessel, time):
-        self.base_position = Position.define_position(position)
+        "Calculates Latitude and Longitude differents from Vessel Data and Ellapsed Time"
+        self.base_position = Position.define_position(position)          # Defines Departure Positio
 
-        self.SOG = Vessel.SOG
-        self.COG = math.radians(Vessel.COG)
+        self.SOG = Vessel.SOG                                            # Defines SOG
+        self.COG = math.radians(Vessel.COG)                              # Transforms COG into radians
 
-        self.ellapsed_time = float(time)
-        self.distance = (self.ellapsed_time*self.SOG)/60
+        self.ellapsed_time = float(time)                                 # Gets Time
+        self.distance = (self.ellapsed_time*self.SOG)                # Calculates distance in minutes D=(VxT)/60
 
+        self.base_latitude = (self.base_position[0])         # Gets Latitude and Transforms 
+        self.base_longitude = (self.base_position[1])        # Gets Latitude and Transforms 
 
-        self.base_latitude = self.base_position[0]
-        self.base_longitude = self.base_position[1]
+        self.latitude_difference = math.cos(self.COG)*(self.distance/60)     # Calculates Latitude Difference LD=D*cos(COG)
 
+        self.meridian_difference = math.sin(self.COG)*(self.distance/60)        # Calculates Meridian Difference mD=D*sin(COG)
 
+        self.latitude_average = self.base_latitude + (self.latitude_difference/2)
 
-        self.latitude_difference = math.cos(self.COG)*self.distance
+        self.longitude_difference = self.meridian_difference/math.cos(math.radians(self.latitude_average))
 
-        self.meridian_difference = math.sin(self.COG)*self.distance
+        self.latitude_difference = self.latitude_difference
+        self.longitude_difference = self.longitude_difference
 
-        self.latitude_average = math.radians(self.base_latitude + self.latitude_difference/2)
-
-        self.longitude_difference = (self.meridian_difference/math.cos(self.latitude_average))
-
-        self.latitude_difference = round(math.degrees(self.latitude_difference),2)
-        self.longitude_difference = round(math.degrees(self.longitude_difference),2)
-
-
-        print([self.latitude_difference, self.longitude_difference])
-
+        
         return [self.latitude_difference, self.longitude_difference]
 
 
@@ -121,7 +117,7 @@ Calculo = DeadReckoning(OwnVessel)                                   # Creates "
 DeadReckoning.direct(Calculo, Salida, OwnVessel, sailed_time)        # Calculates Dead Reckoning Parameters
 
 Llegada = Position()
-Llegada = Salida + DeadReckoning.direct(Calculo, Salida, OwnVessel, sailed_time)  
+
 
 
 
